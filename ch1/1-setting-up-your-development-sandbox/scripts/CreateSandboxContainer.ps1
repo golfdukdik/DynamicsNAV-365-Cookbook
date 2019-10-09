@@ -1,17 +1,17 @@
-﻿install-module navcontainerhelper -force
+﻿#install-module navcontainerhelper -force
 
 # set to $true to accept the eula (https://go.microsoft.com/fwlink/?linkid=861843)
-$accept_eula = $false
+$accept_eula = $true
 
 # set the name of your container (must be 15 characters or less)
-$containername = ''
+$containername = 'navbcexsys'
 
 # set image to use to create container (see here for available images: https://hub.docker.com/_/microsoft-businesscentral-sandbox﻿)
-$bcDockerImage = 'mcr.microsoft.com/businesscentral/sandbox:us'
+$bcDockerImage = 'mcr.microsoft.com/businesscentral/onprem'
 
 # the user you use to login to the Business Central client (is a SUPER user)
 $userName = "admin"
-$password = ConvertTo-SecureString -String "Pass@word1" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "P@ssw0rd" -AsPlainText -Force
 
 # set the secure Url to your Business Central license file (leave blank to use the demo license)
 $licenseFileUri = ''
@@ -23,8 +23,6 @@ New-NavContainer -accept_eula:$accept_eula `
                  -auth UserPassword `
                  -Credential $credential `
                  -licenseFile $licenseFileUri `
-                 -includeCSide `
-                 -alwaysPull `
                  -doNotExportObjectsToText `
                  -usessl:$false `
                  -updateHosts `
